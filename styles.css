@@ -43,12 +43,12 @@ body{
     
 }
 @keyframes in {
-    from{left: -10%;}
+    from{left: -8%;}
     to{left: 0%;}
 }
 @keyframes out{
     from{left:0}
-    to{left: -10%;}
+    to{left: -8%;}
 }
 button
 {
@@ -79,10 +79,18 @@ button:active
     height: 3000px;
     background-color: inherit;
 }
-p {
+.righttab {
     flex: 12;
+    border-top-left-radius: -10px;
+    font-family:'Times New Roman', Times, serif;
+    font-size: 200%;
+    border-left: 5px groove #ad9b74;
+    background-color: #e2ca96;
 }
 html {
     padding: 0;
     
+}
+p{
+    background-color: inherit;
 }
