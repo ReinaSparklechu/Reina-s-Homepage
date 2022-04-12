@@ -11,8 +11,12 @@ body{
     margin: 0;
 }
 .leftbar {
+    animation-name: out;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
     margin: 0%;
     height:100%;
+    position: relative;
     border: 0;
     background-color:rgb(211, 191, 172);
     display: flex;
@@ -21,6 +25,30 @@ body{
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
 
+}
+.leftbar:hover {
+    animation-name: in;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    margin: 0%;
+    height:100%;
+    position:relative;
+    border: 0;
+    background-color:rgb(211, 191, 172);
+    display: flex;
+    flex : 1;
+    flex-direction: column;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    
+}
+@keyframes in {
+    from{left: -10%;}
+    to{left: 0%;}
+}
+@keyframes out{
+    from{left:0}
+    to{left: -10%;}
 }
 button
 {
