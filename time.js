@@ -1,6 +1,18 @@
-const timeWidget = document.getElementById("time");
-const clock = new Date;
-while(true)
-{
-    timeWidget.textContent=toString(clock.getTime());
+
+
+function getTime(){
+    clock = new Date();
+    ctime = clock.getHours() + ':' + clock.getMinutes() + ':' + clock.getSeconds();
+    document.getElementById("time").innerText =  ctime;
 }
+
+function initTime(){
+    window.setInterval(getTime, 1);
+}
+
+
+
+
+
+
+
