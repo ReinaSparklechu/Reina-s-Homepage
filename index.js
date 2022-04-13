@@ -1,7 +1,9 @@
-/*
+
 var admin = require("firebase-admin");
 var serviceAccount = require('./reina-s-base-firebase-adminsdk-y5kk5-94f665d180.json');
-
+var request = require('request');
+var cheerio = require('cheerio');
+const { firestore } = require("firebase-admin");
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount)
@@ -22,24 +24,31 @@ function updatetodb(){
         db.collection('users').doc('names' )
     }
 }
-*/
-
-var request = require('request');
-var cheerio = require('cheerio');
-request('https://www.channelnewsasia.com/?cid=google_sem_paid_12042022_cnamkt&gclid=CjwKCAjw6dmSBhBkEiwA_W-EoMYnAqTedZoE9z_jQXU_NpyeaOnmwpqATI6tOlaZbIxefOqLni2t8BoCcA0QAvD_BwE', (error, response, html)=> {
+var today = Date();
+function scrapeReddit(){
+    request('https://old.reddit.com/r/popular/?geo_filter=GLOBAL', (error, response, html)=> {
         if(!error && response.statusCode==200) {
             const $ = cheerio.load(html);
-            //console.log($('.title may-blank'));
-            $('.h6').each((i,title) =>
+            $('p.title').each((i,title) =>
             {
                 var headings = $(title).text().trim();
+                var link = $(title.firstChild).attr("href");
                 console.log(headings);
+                let redditHeading = {
+                    header: headings,
+                    links : link,
+                    Time: today
+                }
+                db.collection('Reddit').add(redditHeading);
             })
 
         }
     });
+}
+
+scrapeReddit();
 
             
 
 //a.title may-blank loggedin
-//*[@id="block-mc-cna-theme-mainpagecontent"]/article/div/div[1]/div[1]/section/div/div/div[1]/div[2]/div/div/div/h6/a
+//#thing_t3_u2ewn0 > div.entry.unvoted > div.top-matter > p.title > a
