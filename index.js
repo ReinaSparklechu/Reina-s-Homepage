@@ -19,7 +19,7 @@ function scrapeReddit(){
                 let redditHeading = {
                     header: headings,
                     links : link,
-                    Time: today.
+                    Time: today
                 }
                 db.collection('Reddit').add(redditHeading);
             })
