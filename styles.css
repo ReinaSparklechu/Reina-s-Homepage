@@ -13,6 +13,7 @@ body{
 .leftbar {
     animation-name: out;
     animation-duration: 1s;
+    animation-delay: 0.1s;
     animation-fill-mode: forwards;
     margin: 0%;
     height:100%;
@@ -29,7 +30,8 @@ body{
 .leftbar:hover {
     animation-name: in;
     animation-duration: 1s;
-    animation-fill-mode: forwards;
+    animation-delay: 0.1s;
+    animation-fill-mode: backwards;
     margin: 0%;
     height:100%;
     position:relative;
@@ -42,12 +44,12 @@ body{
     
 }
 @keyframes in {
-    from{left: -8%;}
+    from{left: -9%;}
     to{left: 0%;}
 }
 @keyframes out{
     from{left:0}
-    to{left: -8%;}
+    to{left: -9%;}
 }
 button
 {
@@ -101,6 +103,15 @@ html {
 
 #p2 {
     flex:0.2;
+}
+p{
+    background-color: #e2ca96;
+}
+li{
+    background-color: #e2ca96;
+}
+ol{
+    background-color: #e2ca96;
 }
 #time{
     border: 2px solid black;
