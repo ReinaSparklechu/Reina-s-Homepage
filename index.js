@@ -4,9 +4,15 @@ var serviceAccount = require('./reina-s-base-firebase-adminsdk-y5kk5-94f665d180.
 var request = require('request');
 var cheerio = require('cheerio');
 const { firestore } = require("firebase-admin");
-const functions = require('firebase-functions');
+//const functions = require('firebase-functions');
 
+admin.initializeApp({
+    credential:admin.credential.cert(serviceAccount)
+}
+)
+var db =admin.firestore();
 var today = Date();
+
 function scrapeReddit(){
     request('https://old.reddit.com/r/popular/?geo_filter=GLOBAL', (error, response, html)=> {
         if(!error && response.statusCode==200) {
@@ -22,15 +28,20 @@ function scrapeReddit(){
                     Time: today
                 }
                 db.collection('Reddit').add(redditHeading);
+                console.log('added');
             })
 
         }
     });
 }
-
 scrapeReddit();
 
-            
 
+//var deletedata = db.collection('reddit').where('Date', '==', 'Thu Apr 14 2022 11:30:42 GMT+0800 (Singapore Standard Time)');
+//deletedata.get().then(function(querysnap){
+//    querysnap.forEach(function(doc) {
+//        doc.ref.delete();
+//    })
+//})
 //a.title may-blank loggedin
 //#thing_t3_u2ewn0 > div.entry.unvoted > div.top-matter > p.title > a

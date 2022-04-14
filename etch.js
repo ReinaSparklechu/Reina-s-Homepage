@@ -17,18 +17,10 @@ panel.style.height = '320px';
 panel.style.display ="flex";
 panel.style.flexDirection = "column"
 panel.style.justifyContent = "space-evenly";
-panel.click
-function colorchange(cell)
-{   
-    const updatingcell = cell;
-    updatingcell.style.backgroundColor = 'white';
-    alert('hello!')
-}
-panel.addEventListener('click', function(){colorchange(panel)},false);
+cell.addEventListener('click', () =>cell.style.background ='white');
 for(var i = 0; i<16; i++)
 {
     row.appendChild(cell.cloneNode(true));
-    row.
 }
 for(var i=0; i<16;i++)
 {
