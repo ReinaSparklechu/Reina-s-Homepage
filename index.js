@@ -12,7 +12,7 @@ admin.initializeApp({
 )
 var db =admin.firestore();
 var today = Date();
-
+var allWords = [""];
 function scrapeReddit(){
     request('https://old.reddit.com/r/popular/?geo_filter=GLOBAL', (error, response, html)=> {
         if(!error && response.statusCode==200) {
@@ -28,15 +28,15 @@ function scrapeReddit(){
                     Time: today
                 }
                 db.collection('Reddit').add(redditHeading);
-                console.log('added');
+                var words = headings.split(" ")
+                allWords = allWords.concat(words);
             })
-
+            allWords = allWords.filter(word =>word.length >4);
+            console.log(allWords);
         }
     });
 }
-scrapeReddit();
-
-
+const scrape = scrapeReddit();
 //var deletedata = db.collection('reddit').where('Date', '==', 'Thu Apr 14 2022 11:30:42 GMT+0800 (Singapore Standard Time)');
 //deletedata.get().then(function(querysnap){
 //    querysnap.forEach(function(doc) {

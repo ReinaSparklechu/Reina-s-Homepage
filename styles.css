@@ -24,7 +24,7 @@ body{
     flex : 1;
     flex-direction: column;
     border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
+    border-bottom-right-radius: 10px; 
 
 }
 .leftbar:hover {
@@ -41,7 +41,6 @@ body{
     flex-direction: column;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
-    
 }
 @keyframes in {
     from{left: -9%;}

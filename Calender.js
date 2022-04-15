@@ -15,17 +15,21 @@ Header.textContent = Month[currentMonth.getMonth()];
 //set footer display
 Footer.style.display = 'flex';
 Footer.style.flexDirection = 'column';
+Footer.style.maxHeight = '55vh';
 //style date cells;
 dateCells.style.width = '10vh';
 dateCells.style.height = '10vh';
 dateCells.style.border = '1px solid black';
+
 dateRows.style.direction ='row';
 dateRows.style.display = 'flex';
+dateRows.style.maxHeight = '10vh';
+dateRows.style.minHeight = '9vh' 
+
 // get top row to state days
 const toprow = document.createElement('div');
 toprow.style.direction = 'row';
 toprow.style.display = 'flex';
-
 let days = ['Mon', 'Tues', 'Weds', 'Thurs', 'Fri', 'Sat', 'Sun'];
 Footer.appendChild(toprow)
 //create date rows and insert into footer via nested loops
@@ -45,8 +49,17 @@ for(var i = 0; i< 5; i++)
     {
         //adding cells to row
         const cell = dateCells.cloneNode(true);
+        cell.style.minHeight = '9vh';
         cell.setAttribute('id', cellid.toString());
         cell.textContent = cellid.toString();
+        cell.addEventListener('mouseover',
+        (e) => {e.target.style.backgroundColor = 'grey';
+                e.target.style.height = '11vh';
+                e.target.style.width = '11vh'});
+        cell.addEventListener('mouseout',
+        (e) => {e.target.style.backgroundColor = 'initial';
+                e.target.style.height = '10vh';
+                e.target.style.width = '10vh'});
         row.appendChild(cell);
         cellid++;
     }
