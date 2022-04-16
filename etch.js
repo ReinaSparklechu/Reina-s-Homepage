@@ -31,7 +31,7 @@ for(var i=0; i<16; i++)
     panel.appendChild(columns);
 
 }
-
+panel.style.backgroundColor = 'transparent';
 righttab.appendChild(panel);
 righttab.appendChild(button);
 button.addEventListener('click',() =>
