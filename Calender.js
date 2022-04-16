@@ -53,11 +53,13 @@ for(var i = 0; i< 5; i++)
         cell.setAttribute('id', cellid.toString());
         cell.textContent = cellid.toString();
         cell.addEventListener('mouseover',
-        (e) => {e.target.style.backgroundColor = 'grey';
+        (e) => {e.target.style.backgroundColor = '#562135';
+                e.target.style.color = '#ffe7de'
                 e.target.style.height = '11vh';
                 e.target.style.width = '11vh'});
         cell.addEventListener('mouseout',
         (e) => {e.target.style.backgroundColor = 'initial';
+                e.target.style.color = 'initial';
                 e.target.style.height = '10vh';
                 e.target.style.width = '10vh'});
         row.appendChild(cell);
